@@ -1,0 +1,8 @@
+function highAndLow(numbers){
+  // ...
+  const num = numbers.split(" ").map(Number);
+  
+  const maxs = Math.max(...num)
+  const mins = Math.min(...num)
+  return `${maxs} ${mins}`;
+}
