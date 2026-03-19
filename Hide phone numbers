@@ -1,0 +1,22 @@
+function encryptNum(number) {
+  number = number.toString();
+
+  // 1. Validation Regex
+  // I removed the requirement for a separator. 
+  // It now says: Start with (+39, 0039, or 1) followed by ANYTHING or NOTHING.
+  if (!/^(\+39|0039|1)/.test(number)) {
+    return false;
+  }
+  
+  // Extra Fix for "11-" bug: 
+  // If it starts with 1, the next character CANNOT be another digit 
+  // unless it's a long number that fits the phone format.
+  if (number.startsWith("1") && /^\d{2,}/.test(number) && number.length > 11) {
+      return false; 
+  }
+
+  // 2. Masking Regex
+  // This looks for digits and masks the last 6, keeping separators.
+  // It uses a "Lookahead" to count how many digits are left.
+  return number.replace(/\d(?=(\D*\d){0,5}\D*$)/g, 'X');
+}
