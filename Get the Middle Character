@@ -1,0 +1,7 @@
+function getMiddle(s) {
+  //Code goes here!
+    const len = s.length;
+    const start = (len/2)-1;
+    const end = start+1;
+    return len%2!==0?s.slice(start+1,end+1):s.slice(start,end+1);
+}
