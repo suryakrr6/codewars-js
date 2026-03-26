@@ -1,0 +1,8 @@
+
+  //'Even' or 'Odd'
+ const base = function() {};
+
+ const evenOrOdd = new Proxy(base,{
+  get(target,prop){ return Number(prop)%2===0? "Even": "Odd"},
+  apply(target,thisArg,args) {return args[0]%2===0? "Even": "Odd"}
+});
