@@ -1,0 +1,11 @@
+function isIsogram(str){
+  //...
+  str=str.toLowerCase()
+  const unique = [...new Set(str)].join("");
+  if (str===unique){
+   return true
+}
+  else {
+   return false
+} 
+}
