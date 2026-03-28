@@ -1,0 +1,25 @@
+function convert(input, source, target) {
+  let decimalValue = 0; // Use let
+  let sourceBase = source.length;
+
+  for (let val of input) {
+    let a = source.indexOf(val);
+    // 1. Move this inside the loop!
+    decimalValue = (decimalValue * sourceBase) + a;
+  }
+
+  if (decimalValue === 0) return target[0];
+
+  let res = ""; // Start with empty string
+  let targetBase = target.length;
+
+  while (decimalValue > 0) {
+    let index = decimalValue % targetBase;
+    // 2. Add to the front of the string
+    res = target[index] + res; 
+    // 3. IMPORTANT: Shrink the number so the loop ends!
+    decimalValue = Math.floor(decimalValue / targetBase);
+  }
+  
+  return res;
+}
